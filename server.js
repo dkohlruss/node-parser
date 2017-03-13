@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  let ipaddress = req.connection.remoteAddress;
+  let ipaddress = req.headers['x-forwarded-for'];
   let rawBrowser = req.headers['user-agent'];
   let rawLanguage = req.headers['accept-language'];
 
