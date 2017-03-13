@@ -4,10 +4,10 @@ const app = express();
 
 app.get('/', (req, res) => {
   let ipaddress = req.headers['x-forwarded-for'];
-  let rawBrowser = req.headers['user-agent'];
+  let rawOS = req.headers['user-agent'];
   let rawLanguage = req.headers['accept-language'];
 
-  let browser = browserify(rawBrowser);
+  let os = browserify(rawOS);
   let language = langify(rawLanguage);
 
   function browserify(raw) {
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
   res.send({
     ipaddress,
-    browser,
+    os,
     language
   })
 });
